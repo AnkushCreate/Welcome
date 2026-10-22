@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ankush | Mechatronics &amp; Robotics</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#EDF1F4; --panel:#E2E8EE; --ink:#101C2E; --muted:#4D5B6E; --line:#C3CED9; --accent:#2F4BDB; --accent-ink:#fff;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#121A26; --panel:#1A2433; --ink:#E6ECF3; --muted:#9AA8BA; --line:#2B384B; --accent:#7C93FF; --accent-ink:#0E1522; color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#121A26; --panel:#1A2433; --ink:#E6ECF3; --muted:#9AA8BA; --line:#2B384B; --accent:#7C93FF; --accent-ink:#0E1522; color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif}
+h1,h2,h3{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;line-height:1.05;margin:0;letter-spacing:-.02em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+header.top{display:flex;justify-content:space-between;align-items:center;padding:22px 0}
+header.top b{font-family:"Bricolage Grotesque",sans-serif;font-size:20px}
+nav a{margin-left:22px;text-decoration:none;color:var(--muted);font-size:15px}
+nav a:hover{color:var(--ink)}
+.hero{position:relative;min-height:560px;border-bottom:1px solid var(--line);overflow:hidden}
+.hero canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero .copy{position:relative;padding:72px 0 96px;max-width:620px;pointer-events:none}
+.hero .copy a{pointer-events:auto}
+.hero h1{font-size:clamp(46px,8vw,92px);font-weight:700}
+.hero p{font-size:20px;color:var(--muted);margin:22px 0 30px;max-width:30em}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 20px;border-radius:8px;text-decoration:none;font-weight:500;border:1.5px solid var(--ink)}
+.btn.p{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:hover{transform:translateY(-1px)}
+section{padding:80px 0;border-bottom:1px solid var(--line)}
+section>.wrap>h2{font-size:clamp(30px,4.5vw,46px);margin-bottom:36px}
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.3fr);gap:8px 40px;padding:26px 0;border-top:1px solid var(--line)}
+.proj h3{font-size:26px}
+.proj .meta{color:var(--accent);font-weight:500;font-size:15px;margin-top:6px}
+.proj p{margin:0;max-width:60ch}
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:28px}
+.stack h3{font-size:20px;margin-bottom:8px}
+.stack p{margin:0;color:var(--muted)}
+.panel{background:var(--panel);border-radius:14px;padding:32px}
+.panel h3{font-size:26px;margin-bottom:10px}
+.panel p{margin:0 0 10px;max-width:60ch}
+footer{padding:48px 0 64px;color:var(--muted);font-size:15px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (max-width:720px){.proj{grid-template-columns:1fr}nav a{margin-left:14px}.hero{min-height:620px}.hero .copy{padding-top:40px}}
+@media (prefers-reduced-motion:reduce){.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap"><header class="top"><b>Ankush</b><nav><a href="#work">Work</a><a href="#stack">Toolkit</a><a href="#bytforge">Bytforge</a><a href="#contact">Contact</a></nav></header></div>
+
+<div class="hero">
+  <canvas id="arm" aria-hidden="true"></canvas>
+  <div class="wrap"><div class="copy">
+    <h1>I build robots that move.</h1>
+    <p>Second-year mechatronics student at Chandigarh University. I design, print and program machines: walking robots, flapping wings, wearable arms.</p>
+    <div class="btns"><a class="btn p" href="#work">See the builds</a><a class="btn" href="https://github.com/AnkushCreate">GitHub: AnkushCreate</a></div>
+  </div></div>
+</div>
+
+<section id="work"><div class="wrap">
+  <h2>Selected builds</h2>
+  <article class="proj"><div><h3>Wearable tentacle arm</h3><div class="meta">ESP32, 5 servos, 3D-printed PLA+</div></div>
+    <p>A Doc Ock-style cable-driven arm, 100&nbsp;cm long, worn on the body. Printed segments ride on a 6&nbsp;mm nylon rod spine, four servos pull the tendons and a fifth drives the claw. It is controlled from a web interface served by the ESP32.</p></article>
+  <article class="proj"><div><h3>Quadruped spider robot</h3><div class="meta">ESP32, ESP-CAM, PCA9685, ESP-NOW</div></div>
+    <p>A four-legged walker on MG996R servos with animatronic eyes and obstacle avoidance. Wireless control runs over ESP-NOW, and the camera board handles vision.</p></article>
+  <article class="proj"><div><h3>Electromagnetic maglev train</h3><div class="meta">PID control, electromagnets</div></div>
+    <p>A DIY levitating train held in place by a PID loop that keeps the gap steady.</p></article>
+  <article class="proj"><div><h3>Ornithopter and gesture-controlled servos</h3><div class="meta">ESP32, PCA9685, servos</div></div>
+    <p>A flapping-wing aircraft, plus a gesture-driven servo system with a web UI for controlling the motion.</p></article>
+  <article class="proj"><div><h3>GPS tracker</h3><div class="meta">NEO-6M, NodeMCU ESP8266</div></div>
+    <p>A tracker that creates its own WiFi hotspot and serves a live location dashboard. Work in progress.</p></article>
+  <article class="proj"><div><h3>Student Data Management System</h3><div class="meta">C++, web UI on GitHub Pages</div></div>
+    <p>A C++ data management system with a browser front end. Source is in the <a href="https://github.com/AnkushCreate">student-final</a> repository.</p></article>
+</div></section>
+
+<section id="stack"><div class="wrap">
+  <h2>Toolkit</h2>
+  <div class="stack">
+    <div><h3>Firmware</h3><p>C and C++, MicroPython, ESP32, Raspberry Pi Pico, 8051, ESP-NOW</p></div>
+    <div><h3>Mechanical</h3><p>SolidWorks, Fusion&nbsp;360, 3D printing, cable and tendon mechanisms</p></div>
+    <div><h3>Software</h3><p>Competitive programming in C++, MATLAB, web interfaces, ROS&nbsp;2 (learning)</p></div>
+    <div><h3>Visual</h3><p>Blender at a professional level for renders and product visuals</p></div>
+  </div>
+</div></section>
+
+<section id="bytforge"><div class="wrap">
+  <div class="panel">
+    <h3>Bytforge</h3>
+    <p>My freelance studio for people who need something made. I take on PowerPoint design, 3D design, Shopify and web development, and small robotics projects.</p>
+    <p>Tell me what you need and I will tell you what is realistic.</p>
+  </div>
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Where I’m heading</h2>
+  <p style="max-width:56ch;margin:0 0 28px">I’m aiming for a robotics career in Germany or Japan, with a Master’s in Germany along the way. Until then I keep building. New work lands on GitHub first.</p>
+  <div class="btns"><a class="btn p" href="https://github.com/AnkushCreate">Follow on GitHub</a></div>
+</div></section>
+
+<div class="wrap"><footer><span>© 2026 Ankush</span><span>Chandigarh University, Mechatronics Engineering</span></footer></div>
+
+<script>
+(function(){
+  var c=document.getElementById('arm'),x=c.getContext('2d'),N=18,seg=[],W,H,dpr,L,tgt={x:0,y:0},base={x:0,y:0};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function css(n){return getComputedStyle(document.documentElement).getPropertyValue(n).trim()}
+  function size(){
+    dpr=Math.min(devicePixelRatio||1,2);W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;x.setTransform(dpr,0,0,dpr,0,0);
+    base.x=W>720?W*0.82:W*0.5;base.y=H+10;L=Math.min(H*0.72,420)/N;
+    seg=[];for(var i=0;i<=N;i++)seg.push({x:base.x,y:base.y-i*L});
+    tgt.x=W>720?W*0.62:W*0.5;tgt.y=H*0.3;
+  }
+  function solve(){
+    seg[N].x=tgt.x;seg[N].y=tgt.y;
+    for(var i=N-1;i>=0;i--){var dx=seg[i].x-seg[i+1].x,dy=seg[i].y-seg[i+1].y,d=Math.hypot(dx,dy)||1;seg[i].x=seg[i+1].x+dx/d*L;seg[i].y=seg[i+1].y+dy/d*L}
+    seg[0].x=base.x;seg[0].y=base.y;
+    for(var j=1;j<=N;j++){var ex=seg[j].x-seg[j-1].x,ey=seg[j].y-seg[j-1].y,e=Math.hypot(ex,ey)||1;seg[j].x=seg[j-1].x+ex/e*L;seg[j].y=seg[j-1].y+ey/e*L}
+  }
+  function draw(){
+    x.clearRect(0,0,W,H);
+    var ink=css('--ink'),acc=css('--accent'),line=css('--line');
+    x.lineCap='round';x.lineJoin='round';
+    x.strokeStyle=line;x.lineWidth=1;
+    for(var g=0;g<W;g+=48){x.beginPath();x.moveTo(g,0);x.lineTo(g,H);x.stroke()}
+    for(var h=0;h<H;h+=48){x.beginPath();x.moveTo(0,h);x.lineTo(W,h);x.stroke()}
+    for(var i=0;i<N;i++){
+      var t=i/N;x.strokeStyle=ink;x.lineWidth=22-t*15;
+      x.beginPath();x.moveTo(seg[i].x,seg[i].y);x.lineTo(seg[i+1].x,seg[i+1].y);x.stroke();
+      x.strokeStyle=css('--bg');x.lineWidth=18-t*15>1?18-t*15-4:1;
+      x.beginPath();x.moveTo(seg[i].x,seg[i].y);x.lineTo(seg[i+1].x,seg[i+1].y);x.stroke();
+    }
+    var e=seg[N];x.fillStyle=acc;x.beginPath();x.arc(e.x,e.y,8,0,7);x.fill();
+  }
+  function frame(){solve();draw();if(!reduce)requestAnimationFrame(frame)}
+  addEventListener('resize',function(){size();frame()});
+  function move(px,py){var r=c.getBoundingClientRect();tgt.x=px-r.left;tgt.y=Math.min(py-r.top,H-60)}
+  addEventListener('pointermove',function(e){move(e.clientX,e.clientY)});
+  addEventListener('touchmove',function(e){var t=e.touches[0];if(t)move(t.clientX,t.clientY)},{passive:true});
+  size();
+  if(reduce){for(var k=0;k<40;k++)solve();draw()}else{frame()}
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change',function(){if(reduce)draw()});
+})();
+</script>
+</body>
+</html>
